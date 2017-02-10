@@ -1,11 +1,12 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
+    <card></card>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
+import card from "./components/Card"
 export default {
   name: 'app',
   data(){
@@ -15,6 +16,7 @@ export default {
     }
   },
   components:{
+    card
   }
 }
 </script>
