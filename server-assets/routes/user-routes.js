@@ -25,7 +25,7 @@ router.post('/users', (req, res) => {
     let newUser = req.body
 
     Users.create(newUser)
-        .then(galaxy => {
+        .then(user => {
             res.send({ message: "Successfully created a new user", data: user })
         })
         .catch(err => {
