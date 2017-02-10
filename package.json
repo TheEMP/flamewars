@@ -6,10 +6,12 @@
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
+    "live-serve": "nodemon build/dev-server.js backend",
     "build": "node build/build.js"
   },
   "dependencies": {
     "node-sass": "^4.5.0",
+    "nodemon": "^1.11.0",
     "sass-loader": "^5.0.1",
     "vue": "^2.1.10",
     "vue-markdown": "^2.1.3",
