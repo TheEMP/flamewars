@@ -21,6 +21,14 @@ router.get('/users/:id', function (req, res) {
     })
 })
 
+router.get('/users/:id/threads', function (req, res) {
+    Threads.find({userId: req.params.userId}).then(thread => {
+        res.send({ data: thread })
+    }).catch(err => {
+        res.send({ error: err })
+    })
+})
+
 router.post('/users', (req, res) => {
     let newUser = req.body
 
