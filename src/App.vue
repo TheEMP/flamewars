@@ -1,10 +1,12 @@
 <template>
   <div id="app">
+    <card></card>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
+import card from "./components/Card"
 export default {
   name: 'app',
   data(){
@@ -14,6 +16,7 @@ export default {
     }
   },
   components:{
+    card
   }
 }
 </script>
