@@ -21,8 +21,8 @@
 <script>
     import VueMarkdown from "vue-markdown"
     import comments from "./Comment-list"
-    import edit from "./Edit"
-    import reply from "./Reply"
+    import edit from "../shared/Edit"
+    import reply from "../shared/Reply"
     export default {
         name: "comment-item",
         methods: {

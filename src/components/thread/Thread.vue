@@ -17,10 +17,9 @@
 
 <script>
     import VueMarkdown from "vue-markdown"
-    import threads from "./mock-threads.js"
-    import comments from "./Comment-list"
-    import edit from "./Edit"
-    import reply from "./Reply"
+    import comments from "../comment/Comment-list"
+    import edit from "../shared/Edit"
+    import reply from "../shared/Reply"
     export default {
         name: "thread",
         methods:{

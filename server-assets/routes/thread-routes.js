@@ -19,12 +19,12 @@ router.get('/threads', function (req, res) {
 
 router.get('/threads/:id', function (req, res) {
     Threads.findById(req.params.id)
-    .populate("comments")
-    .then(thread => {
-        res.send({ data: thread })
-    }).catch(err => {
-        res.send({ error: err })
-    })
+        .populate("comments")
+        .then(thread => {
+            res.send({ data: thread })
+        }).catch(err => {
+            res.send({ error: err })
+        })
 })
 
 router.put('/threads/:id', function (req, res) {
@@ -41,26 +41,22 @@ router.put('/threads/:id', function (req, res) {
     })
 })
 
-router.post('/threads/:id/upvote', function (req, res) {
-
-    let newVote = req.body.votes
-    console.log(req)
-    Threads.find({ threadId: req.params.id })
-
-    // Threads.findById(req.params.id).then(thread => {
-    //     res.send({ data: thread })
-    // }).catch(err => {
-    //     res.send({ error: err })
-    // })
-})
-
-router.post('/threads/:id/upvote', function (req, res) {
-    Threads.findById(req.params.id).then(thread => {
-        res.send({ data: thread })
-    }).catch(err => {
+router.delete('/threads/:id', function (req, res) {
+    Threads.findByIdAndRemove(req.params.id)
+    .then(res.send({ message: "Successfully deleted thread" })
+    ).catch(err => {
         res.send({ error: err })
     })
 })
+
+// router.post('/threads/:id/upvotes', function (req, res) {
+//     Threads.find({threadId: req.params.id}).then(thread => {
+//         thread.votes.push()
+//         res.send({ data: thread })
+//     }).catch(err => {
+//         res.send({ error: err })
+//     })
+// })
 
 router.post('/threads', (req, res) => {
     let newThread = req.body
@@ -74,5 +70,6 @@ router.post('/threads', (req, res) => {
         })
 
 })
+
 
 module.exports = router

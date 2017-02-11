@@ -22,7 +22,7 @@
                 axios.post("api/threads", {
                     name: this.title,
                     text: this.text,
-                    userId: "589e58c453c96b2accf44cc6"
+                    userId: getCookie("userId")
                 }).then(res =>{
                     console.log(res)
                 }).catch(err=>{
