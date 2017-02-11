@@ -65,7 +65,8 @@ router.post('/login', (req, res) => {
             return res.send({error: 'Invalid Email or Password'})
           }
           req.session.uid = user._id;
-          req.session.save()
+          let session = req.session.save()
+          console.log(session)
           user.password = null
           delete user.password
           res.send({

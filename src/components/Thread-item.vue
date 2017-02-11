@@ -1,16 +1,16 @@
 <template>
-    <router-link :to='{name: "thread-show", params:{id: thread.id}}' class="card-container">
+    <router-link :to='{name: "thread-show", params:{id: thread._id}}' class="card-container">
         <div class="thread-title">
-            {{thread.title}}
+            {{thread.name}}
         </div>
         <div class="thread-author">
-            {{thread.author}}
+            {{thread.userId}}
         </div>
         <div class="thread-date">
-            {{thread.date}}
+            {{thread.created}}
         </div>
         <div class="thread-upvotes">
-            {{thread.upvotes}}
+            <!--{{thread.upvotes}}-->
         </div>
     </router-link>
 </template>

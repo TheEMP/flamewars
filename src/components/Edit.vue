@@ -24,6 +24,9 @@
                 //
             }
         },
+        mounted(){
+            this.msgText = this.text
+        },
         data(){
             return {
                 msgText: this.text,
