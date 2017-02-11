@@ -41,14 +41,6 @@ router.put('/threads/:id', function (req, res) {
     })
 })
 
-router.put('/threads/:id', function (req, res) {
-    Threads.findById(req.params.id).then(thread => {
-        res.send({ message: "Successfully changed thread", data: thread })
-    }).catch(err => {
-        res.send({ error: err })
-    })
-})
-
 router.post('/threads/:id/upvote', function (req, res) {
 
     let newVote = req.body.votes
