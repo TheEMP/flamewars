@@ -23,7 +23,8 @@
             }
         },
         props: {
-            threads: {type: Array, default: function() {return mockdata}}
+            threads: {type: Array, default: function() {return mockdata}},
+            allthreads: true
         },
         mounted() {
             // Load List of threads
