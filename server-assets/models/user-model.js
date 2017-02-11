@@ -9,7 +9,6 @@ let UserSchemaModel = {
     name: { type: String, required: true },
     email: { type: String, required: true, unique: true, dropDups: true },
     password: { type: String, required: true },
-    votes: [{ type: ObjectId, ref: 'Vote' }],
     created: { type: Date, default: Date.now() },
     // Relations
     threads: [{ type: ObjectId, ref: 'Thread' }],

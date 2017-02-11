@@ -4,7 +4,7 @@ var app = express()
 let bodyParser = require('body-parser')
 let mongoose = require('mongoose')
 
-// mongoose.Promise = global.Promise;
+mongoose.Promise = global.Promise;
 // mongoose.connect('mongodb://10.7.0.3:27107/data/db');
 
 // Put all your routes here, just like normal
@@ -63,6 +63,10 @@ connection.once('open', () => {
 
 app.use(userRoutes)
 app.use(threadRoutes)
+
+app.use(commentRoutes)
+
 app.use(voteRoutes)
+
 
 module.exports = app 
