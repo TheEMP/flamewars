@@ -2,8 +2,10 @@
     <div class="thread-container">
         <slot></slot>
         <router-view></router-view>
-        <threaditem v-for="(item, index) in threads" :thread="item">
-        </threaditem>
+        <ul class="collection">
+            <threaditem v-for="(item, index) in threads" :id="index" :thread="item">
+            </threaditem>
+        </ul>
         <div class="pagenation-holder">
             <div v-for="(item,index) in totalthreads" class="pagenation">
                 {{index + 1}}
@@ -32,7 +34,7 @@
         mounted() {
             // Load List of threads
             if (this.allthreads) {
-               
+
             }
             // console.log(this.threads)
             // var totalNeeded = Math.ceil(this.threads.length/20)

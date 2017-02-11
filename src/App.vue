@@ -6,6 +6,7 @@
 </template>
 
 <script>
+<<<<<<< HEAD
 
 
 import navbar from "./components/Nav"
@@ -15,12 +16,19 @@ import navbar from "./components/Nav"
       navbar
     }
 
+=======
+  export default {
+    name: 'app'
+>>>>>>> a605fbfe0afd72416c1ad95f41194e243cc58be9
   }
 
 </script>
 
 <style>
+<<<<<<< HEAD
 
+=======
+>>>>>>> a605fbfe0afd72416c1ad95f41194e243cc58be9
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -33,6 +41,7 @@ body{
   background:turquoise;
 }
 </style>
+<<<<<<< HEAD
 
   #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
@@ -47,3 +56,5 @@ body{
     background: pink;
   }
 </style>
+=======
+>>>>>>> a605fbfe0afd72416c1ad95f41194e243cc58be9

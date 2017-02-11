@@ -10,8 +10,7 @@
        <vue-markdown :source="thread.text"></vue-markdown>
        <reply :comment="thread"></reply>
        <edit :comment="thread" :text="thread.text"></edit>
-       <comment-list :comments="thread.comments">
-       </comment-list>
+       <comment-list onThread="true" :comments="thread.comments"></comment-list>
     </div>
 </template>
 
@@ -28,21 +27,16 @@
             },
             
         },
-        // computed:{
-        //     thread(){
-        //         let id = this.$route.params.id
-        //         return threads.filter(i=>{
-        //             if (i.id == id ){
-        //                 return i
-        //             }
-        //         })[0]
-        //     }
-        // },
         mounted() {
+            let vm = this
             console.log(this.$route.params.id)
              axios.get("api/threads/"+this.id).then(res => {
                 console.log("thread", res.data.data)
-                this.thread = res.data.data
+                vm.thread = res.data.data
+                axios.get("api/comments?threadId="+vm.id).then(res => {
+                    console.log(res)
+                    vm.thread.comments = res.data.data
+                })
             }).catch(err => {
                 console.log(err)
             })
@@ -64,7 +58,7 @@
         },
         data() {
             return {
-                thread: {}
+                thread: {comments: []}
             }
         }
     }

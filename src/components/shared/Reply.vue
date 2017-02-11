@@ -1,7 +1,7 @@
 <template>
     <div class="reply-container">
         <button @click="toggle">Comment</button>
-        <form @submit.prevent v-if="active">
+        <form @submit.prevent="addComment" v-if="active">
             <textarea rows="8" cols="100" v-model="msgText">
 
             </textarea>
@@ -14,18 +14,42 @@
 
 <script>
     import VueMarkdown from "vue-markdown"
+    import axios from "axios"
+    import cookies from '../../assets/getCookies.js'
     export default {
         name: "reply",
         methods: {
             toggle() {
-                // Load Tags Date upvotes once the thread has been loaded
                 this.active = !this.active
             },
-            save() {
-                
+            addComment() {
+                console.log("comment",this.comment)
+                if (this.comment.name) {
+                    axios.post("api/comments", {
+                        text: this.msgText,
+                        threadId: this.comment._id,
+                        userId: cookies("userId")
+                    }).then(rep=>{
+                        console.log(rep)
+                    }).catch(err=>{
+                        console.log(err)
+                    })
+                }
+                else  {
+                    axios.post("api/comments", {
+                        text: this.msgText,
+                        commentId: this.comment._id,
+                        userId: cookies("userId")
+                    }).then(res=>{
+                        console.log("commentIdone", res)
+                    }).catch(err=>{
+                        console.log(err)
+                    })
+                }
+
             }
         },
-        data(){
+        data() {
             return {
                 msgText: this.text,
                 active: false

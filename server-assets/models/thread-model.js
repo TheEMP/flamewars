@@ -9,10 +9,10 @@ let ThreadSchemaModel = {
     votes: { type: Object },
     tags: { type: Array },
     favorite: { type: Boolean },
-    created: { type: Date, default: Date.now() },
+    created: { type: Date, default: Date.now().toString() },
     // Relations
     userId: { type: String, ref: 'User', required: true },
-    comments: [{ type: ObjectId, ref: 'Comment' }]
+    icon: { type: String, default: "folder" }
 
 }
 
