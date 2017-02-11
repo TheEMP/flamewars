@@ -18,7 +18,7 @@ let UserSchemaModel = {
 }
 
 let schema = new Schema(UserSchemaModel)
-let UserModel = mongoose.model('User', schema)
+
 
 schema.pre('save', function (next) {
     var user = this;
@@ -51,5 +51,5 @@ schema.methods.validatePassword = function (password) {
 
 
 
-
+let UserModel = mongoose.model('User', schema)
 module.exports = UserModel
