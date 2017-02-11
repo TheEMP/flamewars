@@ -1,6 +1,6 @@
 <template>
     <div class="login-container">
-        <a class="modal-trigger waves-effect waves-light btn" href="#loginModal">Modal</a>
+        
         <form @submit.prevent="login" id="loginModal" class="modal">
             <div class="modal-content">
                 <div class="input-field">

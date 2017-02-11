@@ -4,8 +4,7 @@ import Profile from '../components/users/Profile'
 import Show from '../components/users/Show'
 
 
-import profile from '../components/users/Profile'
-import auth from "../components/users/Auth"
+
 import profileThreads from "../components/users/children/Threads.vue"
 import profileComments from "../components/users/children/Comments.vue"
 
