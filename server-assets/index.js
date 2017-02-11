@@ -20,7 +20,7 @@ let mongoose = require('mongoose')
 let session = require('./sessions/sessions')
 let userRoutes = require('./routes/user-routes')
 let threadRoutes = require('./routes/thread-routes')
-
+let commentRoutes = require('./routes/comment-routes')
 let Auth = require('./routes/user-routes')
 
 function Validate(req, res, next) {

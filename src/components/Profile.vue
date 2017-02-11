@@ -2,8 +2,8 @@
     <div class="profile-container">
         <!--<h1>{{user.name}}</h1>-->
         <h1>{{user.name}}</h1>
-        <img :src=""alt="">
-        <threadlist :threads="evens"></threadlist>
+        <!--<img :src=""alt="">-->
+        <threadlist allthreads="false" :threads="evens"></threadlist>
         <div></div>
     </div>
 </template>

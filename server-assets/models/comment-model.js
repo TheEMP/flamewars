@@ -9,12 +9,24 @@ let CommentSchemaModel = {
     created: { type: Date, default: Date.now() },
     // Relations
     userId: {type: String, ref: 'User', required: true},
-    threadId: {type: String, ref: 'Thread', required: true},
+    threadId: {type: String, ref: 'Thread'},
+    commentId: {type: String, ref: 'Comments'},
     comments: [{ type: ObjectId, ref: 'Comment' }]
 
 }
 
+
+
+
 let schema = new Schema(CommentSchemaModel)
 let CommentModel = mongoose.model('Comment', schema)
 
-module.exports = CommentModel
+
+
+
+
+module.exports = {
+
+}
+
+module.exports.default = CommentModel

@@ -18,7 +18,9 @@ router.get('/threads', function (req, res) {
 })
 
 router.get('/threads/:id', function (req, res) {
-    Threads.findById(req.params.id).then(thread => {
+    Threads.findById(req.params.id)
+    .populate("comments")
+    .then(thread => {
         res.send({ data: thread })
     }).catch(err => {
         res.send({ error: err })
