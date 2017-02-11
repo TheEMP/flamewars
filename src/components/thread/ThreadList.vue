@@ -3,7 +3,7 @@
         <slot></slot>
         <router-view></router-view>
         <ul class="collection">
-            <threaditem  v-for="(item, index) in threads" :id="index" :thread="item">
+            <threaditem v-for="(item, index) in threads" :id="index" :thread="item">
             </threaditem>
         </ul>
         <div class="pagenation-holder">
@@ -34,7 +34,7 @@
         mounted() {
             // Load List of threads
             if (this.allthreads) {
-               
+
             }
             // console.log(this.threads)
             // var totalNeeded = Math.ceil(this.threads.length/20)

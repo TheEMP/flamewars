@@ -13,11 +13,12 @@
                 </div>
                 <div class="center-align thread-date">
                     
-                    <timeago :since="1486815395998" :auto-update="60"></timeago>
+                    <timeago :since="thread.created" :auto-update="60"></timeago>
                 </div>
                 <div class=" thread-upvotes">
                     <!--{{thread.upvotes}}-->
                 </div>
+                <div v-for="tag in thread.tags" class="chip">{{tag}}</div>
             </div>
 
         </li>
@@ -33,6 +34,15 @@
                 required: true
             },
             id: Number
+        }, 
+        mounted(){
+            var tagsarr = []
+            this.thread.tags.forEach(e=>{
+                tagsarr.push({tag:e})
+            })
+            $('.chips').material_chip({
+                data: tagsarr
+            });
         }
     }
 
