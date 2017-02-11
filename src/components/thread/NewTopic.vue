@@ -27,7 +27,7 @@
 
 
                     <blockquote>
-                        <VueMarkdown :source="text">
+                        <VueMarkdown class="left-align" :source="text">
                         </VueMarkdown>
                     </blockquote>
                     <button class="waves-effect waves-red red btn" type="submit">Post!</button>
@@ -52,7 +52,8 @@
                     name: this.title,
                     text: this.text,
                     userId: cookies("userId"),
-                    tags: this.tags
+                    tags: this.tags, 
+                    icon: this.icon
                 }).then(res => {
                     console.log(res)
                 }).catch(err => {

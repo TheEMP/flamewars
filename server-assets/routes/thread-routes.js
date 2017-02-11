@@ -28,13 +28,14 @@ router.get('/threads/:id', function (req, res) {
 })
 
 router.put('/threads/:id', function (req, res) {
-    Threads.findById(req.params.id).then(thread => {
+    Threads.findByIdAndUpdate(req.params.id, { $set: { text: req.body.text, title: req.body.name }}, {new: true})
+        .then(thread => {
         if (req.body.text)
             thread.text = req.body.text;
 
         if (req.body.name)
             thread.name = req.body.name;
-
+        thread.save()
         res.send({ message: "Successfully changed thread", data: thread })
     }).catch(err => {
         res.send({ error: err })
