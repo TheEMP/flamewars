@@ -1,6 +1,9 @@
 var app = require('express')()
-// let bodyParser = require('body-parser')
+let bodyParser = require('body-parser')
 let mongoose = require('mongoose')
+
+// mongoose.Promise = global.Promise;
+// mongoose.connect('mongodb://10.7.0.3:27107/data/db');
 
 // app.get('/name/:name', (req, res)=>{
 //   res.send(req.params.name)
@@ -11,15 +14,16 @@ let mongoose = require('mongoose')
 // })
 
 // Put all your routes here, just like normal
-// let sessions = require('.server-assets/session/session')
+
+let sessions = require('./sessions/sessions')
 let userRoutes = require('./routes/user-routes')
 let threadRoutes = require('./routes/thread-routes')
 
-// app.use(bodyParser.json())
-// app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
 
 const PORT = process.env.PORT || 8000
-let Auth
+
 
 // DONT PUSH A REAL CONNECTION STRING TO GITHUB
 const connectionString = 'mongodb://flamewars:flamewars@ds046549.mlab.com:46549/flamewars'
