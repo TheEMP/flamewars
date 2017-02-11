@@ -2,7 +2,7 @@
     <div class="profile-container">
         <!--<h1>{{user.name}}</h1>-->
         <h1>{{user.name}}</h1>
-        <img :src=""alt="">
+        <img src="" alt="">
         <threadlist :threads="evens"></threadlist>
         <div></div>
     </div>
