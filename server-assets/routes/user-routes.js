@@ -1,6 +1,7 @@
 let express = require('express')
 let Users = require('../models/user-model')
 let Threads = require('../models/thread-model')
+let Comments = require('../models/comment-model')
 
 let router = express.Router()
 
@@ -22,8 +23,16 @@ router.get('/users/:id', function (req, res) {
 })
 
 router.get('/users/:id/threads', function (req, res) {
-    Threads.find({userId: req.params.userId}).then(thread => {
-        res.send({ data: thread })
+    Threads.find({userId: req.params.userId}).then(threads => {
+        res.send({ data: threads })
+    }).catch(err => {
+        res.send({ error: err })
+    })
+})
+
+router.get('/users/:id/comments', function (req, res) {
+    Comments.find({userId: req.params.userId}).then(comments => {
+        res.send({ data: comments })
     }).catch(err => {
         res.send({ error: err })
     })

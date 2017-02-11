@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
-    "live-serve": "nodemon build/dev-server.js backend",
+    "live-serve": "nodemon build/dev-server.js backend --exec babel-node --presets es2015,stage-2",
     "build": "node build/build.js",
     "debug": "node --debug build/dev-server.js"
   },
@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^6.7.2",
+    "babel-cli": "^6.22.2",
     "babel-core": "^6.22.1",
     "babel-loader": "^6.2.10",
     "babel-plugin-transform-runtime": "^6.22.0",

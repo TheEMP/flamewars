@@ -10,27 +10,43 @@ let router = express.Router()
 
 router.get('/threads', function (req, res) {
     Threads.find().then((threads) => {
-        
-        res.send({ data: threads , count: threads.length})
+
+        res.send({ data: threads, count: threads.length })
     }).catch(err => {
         res.send({ error: err })
     })
 })
 
 router.get('/threads/:id', function (req, res) {
-    Threads.findById(req.params.id).then(thread => {
+    Threads.findById(req.params.id)
+    .populate("comments")
+    .then(thread => {
         res.send({ data: thread })
     }).catch(err => {
         res.send({ error: err })
     })
 })
 
+router.put('/threads/:id', function (req, res) {
+    Threads.findById(req.params.id).then(thread => {
+        if (req.body.text)
+            thread.text = req.body.text;
+
+        if (req.body.name)
+            thread.name = req.body.name;
+
+        res.send({ message: "Successfully changed thread", data: thread })
+    }).catch(err => {
+        res.send({ error: err })
+    })
+})
+
 router.post('/threads/:id/upvote', function (req, res) {
-    
+
     let newVote = req.body.votes
     console.log(req)
-    Threads.find({threadId: req.params.id})
-    
+    Threads.find({ threadId: req.params.id })
+
     // Threads.findById(req.params.id).then(thread => {
     //     res.send({ data: thread })
     // }).catch(err => {

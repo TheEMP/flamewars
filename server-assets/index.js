@@ -7,20 +7,12 @@ let mongoose = require('mongoose')
 // mongoose.Promise = global.Promise;
 // mongoose.connect('mongodb://10.7.0.3:27107/data/db');
 
-// app.get('/name/:name', (req, res)=>{
-//   res.send(req.params.name)
-// })
-
-// app.get('/jom/:name', (req, res)=>{
-//   res.send(req.params.name)
-// })
-
 // Put all your routes here, just like normal
 
 let session = require('./sessions/sessions')
 let userRoutes = require('./routes/user-routes')
 let threadRoutes = require('./routes/thread-routes')
-
+let commentRoutes = require('./routes/comment-routes')
 let Auth = require('./routes/user-routes')
 
 function Validate(req, res, next) {
