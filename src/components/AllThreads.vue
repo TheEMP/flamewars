@@ -1,38 +1,30 @@
 <template>
     <div class="thread-container">
-        <router-view></router-view>
-        <threaditem v-for="(item, index) in threads" :thread="item">
-        </threaditem>
-        <div class="pagenation-holder">
-            <div v-for="(item,index) in totalthreads" class="pagenation">
-                {{index + 1}}
-            </div>
-        </div>
+        <threadlist :threads="threads">
+        </threadlist>
     </div>
 </template>
 
 <script>
     import axios from 'axios'
-    import threaditem from "./Thread-item"
+    import threadlist from "./ThreadList"
     //console.log(mockdata)
     export default {
-        name: "threadlist",
+        name: "allthreads",
         data() {
             return {
-                totalthreads: [],
-                curPage: 0,
-                curThreads: []
+                threads: [],
+                curPage: 0
             }
-        },
-        props: {
-            threads: { type: Array },
-            allthreads: { type: Boolean, default() { return true } }
         },
         mounted() {
             // Load List of threads
-            if (this.allthreads) {
-               
-            }
+            axios.get("api/threads").then(res => {
+                console.log("thread", res.data.data)
+                this.threads = res.data.data
+            }).catch(err => {
+                console.log(err)
+            })
             // console.log(this.threads)
             // var totalNeeded = Math.ceil(this.threads.length/20)
             // var count = 0 
@@ -57,7 +49,7 @@
             }
         },
         components: {
-            threaditem
+            threadlist
         }
     }
 

@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import thread from '../components/Thread'
-import threads from "../components/ThreadList"
+import threads from "../components/AllThreads"
 import newThread from "../components/NewTopic"
 import Profile from '../components/Profile.vue'
 
@@ -12,18 +12,19 @@ export default new Router({
     {
       path: '/threads',
       name: 'threads',
-      component: threads
+      component: threads,
+      children: [{
+        path: 'new',
+        name: 'create-thread',
+        component: newThread
+      }]
     },
-     {
+    {
       path: '/thread/:id',
       name: 'thread-show',
       component: thread
     },
-     {
-      path: '/create/',
-      name: 'create-thread',
-      component: newThread
-    },
+
     {
       path: '/profile',
       name: 'profile',

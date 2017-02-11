@@ -1,16 +1,16 @@
 <template>
     <div class="thread-container">
         <div class="thread-title">
-            {{thread.title}}
+            {{thread.name}}
         </div>
         <div class="thread-title">
-            {{thread.author}}
+            {{thread.userId}}
         </div>
 
        <vue-markdown :source="thread.text"></vue-markdown>
        <reply :comment="thread"></reply>
        <edit :comment="thread" :text="thread.text"></edit>
-       <comment-list :comments="threads">
+       <comment-list :comments="thread.comments">
        </comment-list>
     </div>
 </template>
@@ -29,19 +29,24 @@
             },
             
         },
-        computed:{
-            thread(){
-                let id = this.$route.params.id
-                return threads.filter(i=>{
-                    if (i.id == id ){
-                        return i
-                    }
-                })[0]
-            }
-        },
+        // computed:{
+        //     thread(){
+        //         let id = this.$route.params.id
+        //         return threads.filter(i=>{
+        //             if (i.id == id ){
+        //                 return i
+        //             }
+        //         })[0]
+        //     }
+        // },
         mounted() {
             console.log(this.$route.params.id)
-            
+             axios.get("api/threads/"+this.id).then(res => {
+                console.log("thread", res.data.data)
+                this.thread = res.data.data
+            }).catch(err => {
+                console.log(err)
+            })
         },
         components: {
             VueMarkdown,
@@ -60,7 +65,7 @@
         },
         data() {
             return {
-                threads: threads
+                thread: {}
             }
         }
     }
