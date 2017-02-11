@@ -10,8 +10,8 @@
 <!--v-for="(index, thread) in threads"-->
 
 <script>
-    import threadlist from "./ThreadList.vue"
-    import Mock from "./mock-threads.js"
+    import threadlist from "../thread/ThreadList.vue"
+   // import Mock from "./mock-threads.js"
     export default {
         name: 'profile',
         data: function () {
