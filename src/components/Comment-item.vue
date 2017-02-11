@@ -20,7 +20,7 @@
 
 <script>
     import VueMarkdown from "vue-markdown"
-    import comment from "./comment-list"
+    import comments from "./Comment-list"
     import edit from "./Edit"
     import reply from "./Reply"
     export default {
@@ -32,7 +32,7 @@
         },
         components: {
             VueMarkdown,
-            "comment-list":comment,
+            "comment-list":comments,
             edit,
             reply
         },
