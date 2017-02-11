@@ -1,8 +1,7 @@
 <template>
     <div class="comment-container">
-        <h3> Comments on {{parent.userId}}'s post</h3>
+        <h3> Comments</h3>
         <comment-item v-for="(item, index) in comments" :comment="item"></comment-item>
-        
     </div>
 </template>
 
@@ -40,8 +39,7 @@
             "comment-item": comment
         },
         props: {
-            comments: Array,
-            parent: Object
+            comments: Array
         }
     }
 

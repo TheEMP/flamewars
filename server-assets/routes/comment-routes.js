@@ -3,9 +3,9 @@ let Users = require('../models/user-model')
 let Threads = require('../models/thread-model')
 let Votes = require('../models/vote-model')
 let sessions = require('../sessions/sessions')
-//import { createComment, CommentModel as Comments } from '../models/comment-model'
+import { createComment, CommentModel as Comments } from '../models/comment-model'
 
-let Comments = require('../models/comment-model')
+
 let router = express.Router()
 
 //Threads
@@ -20,7 +20,7 @@ router.get('/comments', function (req, res) {
 
 router.post('/comments', function (req, res) {
     let newComment = req.body
-    Comments.create(newComment)
+    createComment(newComment)
         .then(comment => {
             res.send({ message: "Successfully created a new comment", data: comment })
         })

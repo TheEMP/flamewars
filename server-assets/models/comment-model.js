@@ -40,8 +40,7 @@ function createComment(comment) {
     })
 }
 
-// export {
-//     createComment,
-//     CommentModel
-// }
-module.exports = CommentModel
+export {
+    createComment,
+    CommentModel
+}

@@ -1,22 +1,14 @@
 <template>
     <div class="reply-container">
-        <button class="waves-effect waves-green green btn" @click="toggle">Comment</button>
-        <div class="row">
-            <div class="col s6 offset-s3">
+        <button @click="toggle">Comment</button>
+        <form @submit.prevent="addComment" v-if="active">
+            <textarea rows="8" cols="100" v-model="msgText">
 
-
-                <form @submit.prevent="addComment" v-if="active">
-                    <textarea class="materialize-textarea" rows="8" cols="100" v-model="msgText"></textarea>
-
-                    <button type="submit" class="waves-effect waves-light btn-large green"><i class="material-icons">&#xE8CD;</i>New Reply</button>
-                </form>
-                <blockquote>
-                    <VueMarkdown class="left-align" v-if="active" :source="msgText">
-                    </VueMarkdown>
-                </blockquote>
-            </div>
-        </div>
-
+            </textarea>
+            <button type="submit">Comfirm Post</button>
+        </form>
+        <VueMarkdown v-if="active" :source="msgText">
+        </VueMarkdown>
     </div>
 </template>
 
@@ -31,26 +23,26 @@
                 this.active = !this.active
             },
             addComment() {
-                console.log("comment", this.comment)
+                console.log("comment",this.comment)
                 if (this.comment.name) {
                     axios.post("api/comments", {
                         text: this.msgText,
                         threadId: this.comment._id,
                         userId: cookies("userId")
-                    }).then(rep => {
+                    }).then(rep=>{
                         console.log(rep)
-                    }).catch(err => {
+                    }).catch(err=>{
                         console.log(err)
                     })
                 }
-                else {
+                else  {
                     axios.post("api/comments", {
                         text: this.msgText,
                         commentId: this.comment._id,
                         userId: cookies("userId")
-                    }).then(res => {
+                    }).then(res=>{
                         console.log("commentIdone", res)
-                    }).catch(err => {
+                    }).catch(err=>{
                         console.log(err)
                     })
                 }

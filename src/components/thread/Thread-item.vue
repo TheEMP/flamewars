@@ -26,7 +26,6 @@
 </template>
 
 <script>
-    import flame from "./UpVote"
     export default {
         name: "threaditem",
         props: {
@@ -44,9 +43,6 @@
             $('.chips').material_chip({
                 data: tagsarr
             });
-        },
-        components:{
-            flame
         }
     }
 

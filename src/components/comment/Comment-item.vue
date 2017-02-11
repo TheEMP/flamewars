@@ -7,14 +7,13 @@
         <div class="comment-votes">
             <!--{{comment.upvotes}} {{comment.downvotes}}-->
         </div>
-         <reply :comment="comment"></reply>
-        <edit :comment="comment" :text="comment.text"></edit>
         <div v-if="comments.length > 0" class="comment-comments">
-            <comment-list onThread="false" :parrent:"comment" :comments="comments">
+            <comment-list onThread="false" :comments="comments">
 
             </comment-list>
         </div>
-       
+        <reply :comment="comment"></reply>
+        <edit :comment="comment" :text="comment.text"></edit>
     </div>
 </template>
 
