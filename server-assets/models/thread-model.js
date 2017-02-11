@@ -6,7 +6,7 @@ let ThreadSchemaModel = {
     // Data
     name: { type: String, required: true },
     text: {type: String, required: true},
-    votes: [{ type: ObjectId, ref: 'Vote' }],
+    votes: { type: Object },
     tags: { type: Array },
     favorite: { type: Boolean },
     created: { type: Date, default: Date.now() },
