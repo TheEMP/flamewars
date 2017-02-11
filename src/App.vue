@@ -1,12 +1,11 @@
 <template>
   <div id="app">
-    <card></card>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
-import card from "./components/Card"
+
 export default {
   name: 'app',
   data(){
@@ -14,9 +13,6 @@ export default {
       date:Date.now(),
       list:Array.from({length:20}, (i,a)=>Math.random())
     }
-  },
-  components:{
-    card
   }
 }
 </script>

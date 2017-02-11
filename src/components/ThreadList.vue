@@ -1,20 +1,9 @@
 <template>
-    <div v-for"(index, item) in threads" class="card-container">
-        <div class="thread-title">
-            {{item.title}}
-        </div>
-        <div class="thread-author">
-            {{item.author}}
-        </div>
-        <div class="thread-date">
-            {{item.date}}
-        </div>
-        <div class="thread-upvotes">
-            {{item.upvotes}}
-        </div>
-
+    <div class="thread-container">
+        <threaditem v-for="(item, index) in threads" :thread="item">
+        </threaditem>
         <div class="pagenation-holder">
-            <div v-for="(index, item) in totalthreads" :click="openThread(index)" class="pagenation">
+            <div v-for="(item,index) in totalthreads"  class="pagenation">
                 {{index + 1}}
             </div>
         </div>
@@ -22,27 +11,48 @@
 </template>
 
 <script>
+    import mockdata from "./mock-threads.js"
+    import threaditem from "./thread-item"
+    //console.log(mockdata)
     export default {
         name: "threadlist",
         data() {
             return {
-                threads: [],
                 totalthreads: [],
-                curpage: 0
+                curPage: 0
             }
         },
-        mounted(){
+        props: {
+            threads: {type: Array, default: function() {return mockdata}}
+        },
+        mounted() {
             // Load List of threads
+            console.log(this.threads)
+            var totalNeeded = Math.ceil(this.threads.length/20)
+            var count = 0 
+            this.totalthreads = Array.from({length:totalNeeded}, x => count += 1)
+            console.log(this.totalthreads, totalNeeded)
 
-            this.totalthreads = Array.from(Number, ())
         },
-        components: {
-            VueMarkdown
-        }, 
-        methods: {
-            openThread(id) {
-
+        computed: {
+            threadCount() {
+                return this.threads.length
             }
+        },
+        methods:{
+            ChangePage(page){
+                if (page === this.curPage){
+                    return
+                }
+
+                if (!this.totalthreads[page]){
+                    return
+                }
+            }
+        },
+        components:{
+            threaditem
         }
     }
+
 </script>
