@@ -5,8 +5,10 @@ let ObjectId = Schema.Types.ObjectId
 let UserSchemaModel = {
     // Data
     name: { type: String, required: true },
+    password: { type: String, required: true },
     upvotes: { type: Number },
     downvotes: { type: Number },
+    created: { type: Number },
     // Relations
     threads: [{ type: ObjectId, ref: 'Thread' }],
     comments: [{ type: ObjectId, ref: 'Comment' }]

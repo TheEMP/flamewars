@@ -29,12 +29,17 @@ router.get('/users/:id/threads', function (req, res) {
     })
 })
 
-router.post('/users', (req, res) => {
+router.post('/register', (req, res) => {
     let newUser = req.body
 
     Users.create(newUser)
         .then(user => {
-            res.send({ message: "Successfully created a new user", data: user })
+            req.session.id = user._id
+            delete user.password
+            res.send({ 
+                message: "Successfully created a new user account", 
+                data: user 
+            })
         })
         .catch(err => {
             res.send({ error: err })

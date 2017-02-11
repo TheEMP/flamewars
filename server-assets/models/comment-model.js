@@ -5,8 +5,8 @@ let ObjectId = Schema.Types.ObjectId
 let CommentSchemaModel = {
     // Data
     name: { type: String, required: true },
-    upvotes: { type: Number },
-    downvotes: { type: Number },
+    upvotes: { type: ObjectId, ref: 'Upvote' },
+    downvotes: { type: ObjectId, ref: 'Downvote' },
     // Relations
     userId: {type: String, ref: 'User', required: true},
     threadId: {type: String, ref: 'Thread', required: true},

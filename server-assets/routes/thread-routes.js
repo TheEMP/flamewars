@@ -5,9 +5,10 @@ let Threads = require('../models/thread-model')
 let router = express.Router()
 
 // THREADS
+
 router.get('/threads', function (req, res) {
-    Threads.find().then(threads => {
-        res.send({ data: threads })
+    Threads.find().then((threads) => {
+        res.send({ data: threads.length })
     }).catch(err => {
         res.send({ error: err })
     })

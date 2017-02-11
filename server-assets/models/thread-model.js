@@ -5,8 +5,8 @@ let ObjectId = Schema.Types.ObjectId
 let ThreadSchemaModel = {
     // Data
     name: { type: String, required: true },
-    upvotes: { type: Number },
-    downvotes: { type: Number },
+    upvotes: { type: ObjectId, ref: 'Upvote' },
+    downvotes: { type: ObjectId, ref: 'Downvote' },
     tags: { type: Array },
     favorite: { type: Boolean },
     // Relations
