@@ -3,7 +3,7 @@
         <div class="comment-title">
             {{comment.title}}
         </div>
-        <vue-markdown>{{comment.text}}</vue-markdown>
+        <vue-markdown :source="comment.text"></vue-markdown>
         <div class="comment-votes">
             {{comment.upvotes}}
             {{comment.downvotes}}
@@ -13,12 +13,16 @@
 
             </comment-list>
         </div>
+        <reply :comment="comment" ></reply>
+        <edit :comment="comment" :text="comment.text"></edit>
     </div>
 </template>
 
 <script>
-    import comment from "./Comment-list"
     import VueMarkdown from "vue-markdown"
+    import comment from "./comment-list"
+    import edit from "./Edit"
+    import reply from "./Reply"
     export default {
         name: "comment-item",
         methods: {
@@ -28,11 +32,16 @@
         },
         components: {
             VueMarkdown,
-            "comment-list":comment
+            "comment-list":comment,
+            edit,
+            reply
         },
         props: {
             comment: { required: true }
-        }
+        },
+        data(){
+            return {curComment:{title:"Test", author:"test", text:"Hi mom"}}
+        },
     }
 
 </script>

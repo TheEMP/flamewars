@@ -5,10 +5,10 @@ let ObjectId = Schema.Types.ObjectId
 let ThreadSchemaModel = {
     // Data
     name: { type: String, required: true },
-    upvotes: { type: Number },
-    downvotes: { type: Number },
+    votes: [{ type: ObjectId, ref: 'Vote' }],
     tags: { type: Array },
     favorite: { type: Boolean },
+    created: { type: Date, default: Date.now() },
     // Relations
     userId: { type: String, ref: 'User', required: true },
     comments: [{ type: ObjectId, ref: 'Comment' }]
