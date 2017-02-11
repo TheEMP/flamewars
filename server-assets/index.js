@@ -1,4 +1,6 @@
-var app = require('express')()
+
+var express = require('express')
+var app = express()
 let bodyParser = require('body-parser')
 let mongoose = require('mongoose')
 
@@ -7,12 +9,30 @@ let mongoose = require('mongoose')
 
 // Put all your routes here, just like normal
 
-let sessions = require('./sessions/sessions')
+let session = require('./sessions/sessions')
 let userRoutes = require('./routes/user-routes')
 let threadRoutes = require('./routes/thread-routes')
 
+let Auth = require('./routes/user-routes')
+
+function Validate(req, res, next) {
+    // ONLY ALLOW GET METHOD IF NOT LOGGED IN 
+    if (req.method !== 'GET' && !req.session.uid) {
+        return res.send({ error: 'Please Login or Register to continue' })
+    }
+    return next()
+}
+
+
+app.use(session)
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
+// What does this do?
+app.use(express.static(__dirname + '/public'))
+app.use(Auth)
+
+// USE VALIDATE MIDDLEWARE AFTER AUTH
+app.use(Validate)
 
 const PORT = process.env.PORT || 8000
 

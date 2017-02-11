@@ -2,6 +2,7 @@ let express = require('express')
 let Users = require('../models/user-model')
 let Threads = require('../models/thread-model')
 let Votes = require('../models/vote-model')
+let sessions = require('../sessions/sessions')
 
 let router = express.Router()
 
