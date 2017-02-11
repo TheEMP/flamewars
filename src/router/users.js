@@ -7,7 +7,23 @@ export default [
   {
     path: '/profile',
     name: 'profile',
-    component: profile
+    component: profile,
+    children: [
+      {
+        path: 'threads',
+        name: 'profile.threads',
+        template: `
+         <h1>Threads</h1>
+        <threadlist :threads="userThreads"></threadlist>
+        `
+      },
+      {
+        path: 'comments',
+        name: 'profile.comments',
+        template: `       <h1>Comments</h1>
+        <threadlist v-for="comment in comments">{{comment.text}} <br>  {{comments.length}} Comment </threadlist>`
+      },
+    ]
   },
   {
     path: "/auth",

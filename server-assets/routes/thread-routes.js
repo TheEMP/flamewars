@@ -9,7 +9,7 @@ let router = express.Router()
 // THREADS
 
 router.get('/threads', function (req, res) {
-    Threads.find().then((threads) => {
+    Threads.find(req.query).then((threads) => {
 
         res.send({ data: threads, count: threads.length })
     }).catch(err => {

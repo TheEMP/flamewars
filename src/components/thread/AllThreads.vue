@@ -20,7 +20,7 @@
         mounted() {
             // Load List of threads
             axios.get("api/threads").then(res => {
-                console.log("thread", res.data.data)
+                console.log("thread", res.data)
                 this.threads = res.data.data
             }).catch(err => {
                 console.log(err)

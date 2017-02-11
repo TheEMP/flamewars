@@ -6,8 +6,9 @@ let Comments = require('../models/comment-model')
 let router = express.Router()
 
 // Users
+// MAKE SURE TO USE THIS 
 router.get('/users', function (req, res) {
-    Users.find().then(users => {
+    Users.find(req.query).then(users => {
         res.send({ data: users })
     }).catch(err => {
         res.send({ error: err })

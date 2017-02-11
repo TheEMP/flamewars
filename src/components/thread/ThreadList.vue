@@ -1,5 +1,6 @@
 <template>
     <div class="thread-container">
+        <slot></slot>
         <router-view></router-view>
         <threaditem v-for="(item, index) in threads" :thread="item">
         </threaditem>
