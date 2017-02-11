@@ -1,6 +1,7 @@
 let express = require('express')
 let Users = require('../models/user-model')
 let Threads = require('../models/thread-model')
+let Comments = require('../models/comment-model')
 // let Votes = require ('../models/vote-model')
 
 let router = express.Router()
@@ -43,6 +44,43 @@ router.put('/threads/:id/downvote', function (req, res) {
     })
 })
 
+router.put('/comments/:id/upvote', function (req, res) {
+    
+    let comment = req.body
+    // let userId = req.cookies.userId
+    let userId = comment.userId
+    
+    Comments.findById(req.params.id).then(newComment => {
+        console.log(newComment)
+        newComment.votes = newComment.votes || {}
+        newComment.votes[userId] = 1
+        
+        newComment.save()
+        res.send({ message: "Upvoted", data: newComment })
+    })
+    .catch(err => {
+        res.send({ error: err })
+    })
+})
+
+
+router.put('/comments/:id/downvote', function (req, res) {
+     let comment = req.body
+    // let userId = req.cookies.userId
+    let userId = comment.userId
+    
+    Comments.findById(req.params.id).then(newComment => {
+        console.log(newComment)
+        newComment.votes = newComment.votes || {}
+        newComment.votes[userId] = -1
+        
+        newComment.save()
+        res.send({ message: "Downvoted", data: newComment })
+    })
+    .catch(err => {
+        res.send({ error: err })
+    })
+})
 // router.put('/threads/:id/downvote', function (req, res) {
     
 //     let vote = req.body
