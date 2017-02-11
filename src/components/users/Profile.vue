@@ -4,9 +4,8 @@
     
     <div class="nav-content center-align">
       <ul class="tabs tabs-transparent ">
-        <router-link class = "tab" active-class= "active" tag = "li" :to = "{name:'profile.comments'}"><a>Comments</a></router-link>
-        <router-link class = "tab" active-class= "active" tag = "li" :to = "{name:'profile.threads'}"><a>Threads</a></router-link>
-        <router-link class = "tab" active-class= "active" tag = "li" :to = "{name:'threads'}"><a>Home</a></router-link>
+        <router-link class = "tab" active-class= "active" tag = "li" :to = "{name:'profile.threads'}"><a>My Threads</a></router-link>
+        <router-link class = "tab" active-class= "active" tag = "li" :to = "{name:'profile.comments'}"><a>My Comments</a></router-link>
         
       </ul>
     </div>
