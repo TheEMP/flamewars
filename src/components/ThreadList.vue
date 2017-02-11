@@ -40,7 +40,7 @@
             }
         },
         methods:{
-            ChangePage(page){
+            changePage(page){
                 if (page === this.curPage){
                     return
                 }
