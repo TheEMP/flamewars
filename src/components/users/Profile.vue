@@ -24,9 +24,11 @@
                     downvotes: 0,
                 },
                 threads: [],
-                comments: []
+                comments: [],
+                usersThreads: []
             }
         },
+        props: ['user'],
         components: {
             threadlist
         },

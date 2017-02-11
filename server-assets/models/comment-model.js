@@ -5,7 +5,7 @@ let ObjectId = Schema.Types.ObjectId
 let CommentSchemaModel = {
     // Data
     text: { type: String, required: true },
-    votes: [{ type: ObjectId, ref: 'Vote' }],
+    votes: { type: Object },
     created: { type: Date, default: Date.now() },
     // Relations
     userId: { type: String, ref: 'User', required: true },
