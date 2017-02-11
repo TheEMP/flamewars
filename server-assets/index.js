@@ -13,6 +13,7 @@ let session = require('./sessions/sessions')
 let userRoutes = require('./routes/user-routes')
 let threadRoutes = require('./routes/thread-routes')
 let commentRoutes = require('./routes/comment-routes')
+let voteRoutes = require('./routes/vote-routes')
 let Auth = require('./routes/user-routes')
 
 function Validate(req, res, next) {
@@ -62,5 +63,6 @@ connection.once('open', () => {
 
 app.use(userRoutes)
 app.use(threadRoutes)
+app.use(voteRoutes)
 
 module.exports = app 
