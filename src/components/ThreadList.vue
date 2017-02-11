@@ -19,7 +19,7 @@
         data() {
             return {
                 totalthreads: [],
-                curpage: 0
+                curPage: 0
             }
         },
         props: {
@@ -28,7 +28,27 @@
         mounted() {
             // Load List of threads
             console.log(this.threads)
-            //this.totalthreads = Array.from(Number, ())
+            var totalNeeded = Math.ceil(this.threads.length/20)
+            var count = 0 
+            this.totalthreads = Array.from({length:totalNeeded}, x => count += 1)
+            console.log(this.totalthreads, totalNeeded)
+
+        },
+        computed: {
+            threadCount() {
+                return this.threads.length
+            }
+        },
+        methods:{
+            ChangePage(page){
+                if (page === this.curPage){
+                    return
+                }
+
+                if (!this.totalthreads[page]){
+                    return
+                }
+            }
         },
         components:{
             threaditem
@@ -36,5 +56,3 @@
     }
 
 </script>
-
-<threadlist :threads="{}"></threadlist>

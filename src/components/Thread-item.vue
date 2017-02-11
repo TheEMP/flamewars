@@ -24,7 +24,5 @@
                 required: true
             }
         }
-
     }
-
 </script>

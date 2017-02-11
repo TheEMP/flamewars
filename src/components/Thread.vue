@@ -7,8 +7,10 @@
             {{thread.author}}
         </div>
 
-       <vue-markdown>{{thread.text}}</vue-markdown>
-       <comment-list :comments="thread.comments">
+       <vue-markdown :source="thread.text"></vue-markdown>
+       <reply :comment="thread"></reply>
+       <edit :comment="thread" :text="thread.text"></edit>
+       <comment-list :comments="threads">
        </comment-list>
     </div>
 </template>
@@ -17,6 +19,8 @@
     import VueMarkdown from "vue-markdown"
     import threads from "./mock-threads.js"
     import comments from "./Comment-list"
+    import edit from "./Edit"
+    import reply from "./Reply"
     export default {
         name: "thread",
         methods:{
@@ -41,7 +45,9 @@
         },
         components: {
             VueMarkdown,
-            "comment-list":comments
+            "comment-list":comments,
+            reply,
+            edit
         },
         methods:{
             addComment(c) {
@@ -52,10 +58,10 @@
         props:{
             id:{default() {return this.$route.params.id}}
         },
-        // data() {
-        //     return {
-        //         threads: threads
-        //     }
-        // }
+        data() {
+            return {
+                threads: threads
+            }
+        }
     }
 </script>
