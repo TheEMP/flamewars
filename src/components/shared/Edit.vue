@@ -1,16 +1,19 @@
 <template>
     <div :if="canEdit" class="edit-container">
         <div class="row">
-            <div class="col s6 offset-s3">
-                <a @click="toggle" class="waves-effect waves-light red btn"><i class="material-icons left">mode_edit</i>Edit</a>
+            
+                <div class="col s6 offset-s3">
+                    <a @click="toggle" class="waves-effect waves-light red btn"><i class="material-icons left">mode_edit</i>Edit</a>
 
-                <form @submit.prevent="save" v-if="active">
-                    <textarea class="materialize-textarea" rows="8" cols="100" v-model="msgText"></textarea>
-                    <button class="waves-effect waves-light waves-red red btn" type="submit"><i class="material-icons">&#xE86C;</i>Comfirm Edit</button>
-                </form>
-                <VueMarkdown v-if="active" :source="msgText">
-                </VueMarkdown>
-            </div>
+                    <form @submit.prevent="save" v-if="active">
+                        <textarea class="materialize-textarea" rows="8" cols="100" v-model="msgText"></textarea>
+                        <VueMarkdown class="left-align" v-if="active" :source="msgText">
+                        </VueMarkdown>
+                        <button class="waves-effect waves-light waves-red red btn" type="submit"><i class="material-icons">&#xE86C;</i>Comfirm Edit</button>
+
+                    </form>
+                </div>
+
         </div>
     </div>
 </template>
@@ -29,19 +32,20 @@
                 //
                 console.log("saving?")
                 var path = this.comment.name && "threads" || "comments"
-                console.log("api/"+path+"/"+this.comment._id)
-                axios.put("api/"+path+"/"+this.comment._id, {
+                console.log("api/" + path + "/" + this.comment._id)
+                axios.put("api/" + path + "/" + this.comment._id, {
                     text: this.msgText
-                }).then(rep=>{
+                }).then(rep => {
                     console.log(rep)
+                    updateThreadData()
 
-                }).catch(err=>{
+                }).catch(err => {
                     console.log(err)
                 })
-                if (this.comment.name){
+                if (this.comment.name) {
 
                 }
-                
+
             }
         },
         mounted() {

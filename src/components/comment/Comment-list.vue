@@ -1,9 +1,9 @@
 <template>
-    <div class="comment-container">
+    <blockquote class="comment-container card card-panel ">
         <h3> Comments on {{parent.userId}}'s post</h3>
         <comment-item v-for="(item, index) in comments" :comment="item"></comment-item>
         
-    </div>
+    </blockquote>
 </template>
 
 <script>

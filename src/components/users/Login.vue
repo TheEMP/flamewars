@@ -16,7 +16,7 @@
 
             <div class="modal-footer">
 
-                <a class="modal-action waves-effect waves-green btn">Login</a>
+                <button type="submit" class="modal-action waves-effect waves-green btn">Login</button>
                 <div class="left">
                     <router-link v-if="" class="modal-close left-align waves-effect waves-light btn btn-flat" :to='{name: "auth.register"}'>Register</router-link>
                 </div>
@@ -37,6 +37,9 @@
                     email: this.email,
                     password: this.password
                 }).then(res => {
+                    if (res.data.error) {
+                        return 
+                    }
                     console.log(res)
                     Materialize.toast('Login Successful!', 4000)
                     document.cookie = "userId=" + res.data.data._id + "; expires=Thu, 18 Dec 2017 12:00:00 UTC";

@@ -3,9 +3,12 @@ let Users = require('../models/user-model')
 let Threads = require('../models/thread-model')
 let Votes = require('../models/vote-model')
 let sessions = require('../sessions/sessions')
-//import { createComment, CommentModel as Comments } from '../models/comment-model'
+// // import { createComment, CommentModel } from '../models/comment-model'
+// let Comments = CommentModel
 
 let Comments = require('../models/comment-model')
+let createComment = Comments.createComment
+Comments = Comments.CommentModel
 let router = express.Router()
 
 //Threads
@@ -57,4 +60,4 @@ router.delete('/comments/:id', function (req, res) {
 
 
 // module.exports = router
-module.exports = CommentModel
+module.exports = Comments

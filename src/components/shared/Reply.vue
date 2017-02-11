@@ -7,13 +7,12 @@
 
                 <form @submit.prevent="addComment" v-if="active">
                     <textarea class="materialize-textarea" rows="8" cols="100" v-model="msgText"></textarea>
-
-                    <button type="submit" class="waves-effect waves-light btn-large green"><i class="material-icons">&#xE8CD;</i>New Reply</button>
-                </form>
-                <blockquote>
+                    <blockquote>
                     <VueMarkdown class="left-align" v-if="active" :source="msgText">
                     </VueMarkdown>
                 </blockquote>
+                    <button type="submit" class="waves-effect waves-light btn-large green"><i class="material-icons">&#xE8CD;</i>New Reply</button>
+                </form>
             </div>
         </div>
 
@@ -39,6 +38,7 @@
                         userId: cookies("userId")
                     }).then(rep => {
                         console.log(rep)
+                        updateThreadData()
                     }).catch(err => {
                         console.log(err)
                     })

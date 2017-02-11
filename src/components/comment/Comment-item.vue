@@ -1,5 +1,5 @@
 <template>
-    <div class="comment-container">
+    <div class="comment-container card card-panel grey darken-1">
         <div class="comment-title">
             {{comment.title}}
         </div>
@@ -10,11 +10,10 @@
          <reply :comment="comment"></reply>
         <edit :comment="comment" :text="comment.text"></edit>
         <div v-if="comments.length > 0" class="comment-comments">
-            <comment-list onThread="false" :parrent:"comment" :comments="comments">
+            <comment-list onThread="false" :parent="comment" :comments="comments">
 
             </comment-list>
         </div>
-       
     </div>
 </template>
 

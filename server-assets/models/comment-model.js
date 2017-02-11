@@ -15,11 +15,9 @@ let CommentSchemaModel = {
 
 }
 
-
-
-
 let schema = new Schema(CommentSchemaModel)
-import { createComment, CommentModel as Comments } from '../models/comment-model'
+//import { createComment, CommentModel as Comments } from '../models/comment-model'
+let CommentModel = mongoose.model('Comment', schema)
 
 
 function createComment(comment) {
@@ -40,8 +38,8 @@ function createComment(comment) {
     })
 }
 
-export {
-    createComment,
-    CommentModel
-}
-// module.exports = CommentModel
+// export default {
+//     createComment,
+//     CommentModel
+// }
+module.exports = { CommentModel: CommentModel, createComment: createComment };

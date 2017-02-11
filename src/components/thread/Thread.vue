@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="col s12">
                     <p class="flow-text">{{thread.userId}}</p>
-                    
+
                 </div>
             </div>
 
@@ -33,25 +33,9 @@
     import reply from "../shared/Reply"
     export default {
         name: "thread",
-        methods: {
-            toggleThreadFavorite() {
-
-            },
-
-        },
         mounted() {
-            let vm = this
-            console.log(this.$route.params.id)
-            axios.get("api/threads/" + this.id).then(res => {
-                console.log("thread", res.data.data)
-                vm.thread = res.data.data
-                axios.get("api/comments?threadId=" + vm.id).then(res => {
-                    console.log(res)
-                    vm.thread.comments = res.data.data
-                })
-            }).catch(err => {
-                console.log(err)
-            })
+            this.updateData()
+            window.updateThreadData = this.updateData
         },
         components: {
             VueMarkdown,
@@ -60,9 +44,19 @@
             edit
         },
         methods: {
-            addComment(c) {
-                c.id = Math.random()
-                this.threads.push(c)
+            updateData() {
+                let vm = this
+                console.log(this.$route.params.id)
+                axios.get("api/threads/" + this.id).then(res => {
+                    console.log("thread", res.data.data)
+                    vm.thread = res.data.data
+                    axios.get("api/comments?threadId=" + vm.id).then(res => {
+                        console.log(res)
+                        vm.thread.comments = res.data.data
+                    })
+                }).catch(err => {
+                    console.log(err)
+                })
             }
         },
         props: {

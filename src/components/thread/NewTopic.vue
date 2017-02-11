@@ -44,6 +44,7 @@
     import VueMarkdown from "vue-markdown"
     import axios from 'axios'
     import cookies from '../../assets/getCookies.js'
+    import Router from '../../router'
     export default {
         name: "newtopic",
         methods: {
@@ -55,6 +56,8 @@
                     tags: this.tags, 
                     icon: this.icon
                 }).then(res => {
+                    Router.push({ name: 'thread-show', params: { id:res.data.data._id }})
+
                     console.log(res)
                 }).catch(err => {
                     console.log(err)

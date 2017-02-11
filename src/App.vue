@@ -20,8 +20,8 @@ import navbar from "./components/Nav"
 
 </script>
 
-<style>
-
+<style lang="scss">
+/*@import "./assets/materialize/materialize";*/
 
 
 #app {
