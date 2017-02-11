@@ -62,5 +62,5 @@ connection.once('open', () => {
 
 app.use(userRoutes)
 app.use(threadRoutes)
-
+app.use(commentRoutes)
 module.exports = app 
