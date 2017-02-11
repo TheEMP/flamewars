@@ -16,16 +16,11 @@
         name: 'profile',
         data: function () {
             return {
-                user: {
-                    id: 0,
-                    name: "asdf",
-                    url: "http://",
-                    downvotes: 0,
-                },
-                threads: Mock,
+                threads: [],
                 usersThreads: []
             }
         },
+        props: ['user'],
         components: {
             threadlist
         },

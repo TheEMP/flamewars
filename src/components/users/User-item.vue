@@ -1,8 +1,6 @@
 <template>
     <div class="user-container">
-        {{
-            user.name
-        }}
+       <router-link :to="{name:'user.show', params:{id: user._id}}">{{user.name}}</router-link> 
     </div>
 </template>
 

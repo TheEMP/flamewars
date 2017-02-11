@@ -10,7 +10,6 @@ export default {
   name: 'app',
   data(){
     return {
-      date:Date.now(),
       list:Array.from({length:20}, (i,a)=>Math.random())
     }
   }
@@ -27,6 +26,6 @@ export default {
   margin-top: 60px;
 }
 body{
-  background:pink;
+  background:turquoise;
 }
 </style>
