@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "node build/dev-server.js",
     "live-serve": "nodemon build/dev-server.js backend --exec babel-node --presets es2015,stage-2",
+    "kenny": "babel-node build/dev-server.js backend --presets es2015,stage-2",
     "build": "node build/build.js",
     "debug": "node --debug build/dev-server.js"
   },
