@@ -5,22 +5,22 @@
         </div>
         <vue-markdown :source="comment.text"></vue-markdown>
         <div class="comment-votes">
-            {{comment.upvotes}}
-            {{comment.downvotes}}
+            <!--{{comment.upvotes}} {{comment.downvotes}}-->
         </div>
-        <div class="comment-comments">
-            <comment-list :comments="comment.comments">
+        <div v-if="comments.length > 0" class="comment-comments">
+            <comment-list onThread="false" :comments="comments">
 
             </comment-list>
         </div>
-        <reply :comment="comment" ></reply>
+        <reply :comment="comment"></reply>
         <edit :comment="comment" :text="comment.text"></edit>
     </div>
 </template>
 
 <script>
+    import Vue from 'vue'
     import VueMarkdown from "vue-markdown"
-    import comments from "./Comment-list"
+    //import commentslist from "./Comment-list"
     import edit from "../shared/Edit"
     import reply from "../shared/Reply"
     export default {
@@ -32,16 +32,47 @@
         },
         components: {
             VueMarkdown,
-            "comment-list":comments,
             edit,
             reply
         },
         props: {
-            comment: { required: true }
+            comment: { required: true },
+            onThread: Boolean
         },
-        data(){
-            return {curComment:{title:"Test", author:"test", text:"Hi mom"}}
+        computed: {
+            subComments() {
+                return this.comment.comments.filter(e => {
+                    if (e.commentId === this.comment._id) {
+                        return e
+                    }
+                })
+            }
         },
+        mounted() {
+            let vm = this
+            try {
+                console.log("here", vm.comment)
+                if (vm.comments.commentId) {
+                    return
+                }
+                axios.get("api/comments?commentId=" + vm.comment._id).then(res => {
+                    console.log("subcomments", res)
+                    vm.comments = res.data.data
+                }).catch(err => {
+                    console.log(err)
+                })
+            }
+            catch (e) {
+                console.log(e)
+            }
+
+        },
+        data() {
+            return { comments: [] }
+        },
+        beforeCreate: function () {
+            this.$options.components.commentList = require('./Comment-list.vue')
+        }
     }
 
 </script>
