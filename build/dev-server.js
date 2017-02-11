@@ -77,11 +77,12 @@ devMiddleware.waitUntilValid(function () {
 module.exports = app.listen(port, function (err) {
   if (err) {
     console.log(err)
-    return
+    return  
   }
 
   // when env is testing, don't need open it
-  if (autoOpenBrowser && process.env.NODE_ENV !== 'testing' && process.argv[0] != "backend") {
+  if (autoOpenBrowser && process.env.NODE_ENV !== 'testing' && !process.argv.some(a=>a.includes("backend"))) {
+    console.log(process.argv[0]) 
     opn(uri)
   }
 })
