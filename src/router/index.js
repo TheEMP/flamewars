@@ -1,14 +1,21 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import thread from '../components/Thread'
+import threads from "../components/ThreadList"
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
-    // {
-    //   // path: '/',
-    //   // name: 'Hello',
-    //   // component: Hello
-    // }
+    {
+      path: '/threads',
+      name: 'threads',
+      component: threads
+    },
+     {
+      path: '/thread/:id',
+      name: 'thread-show',
+      component: thread
+    }
   ]
 })
