@@ -10,9 +10,5 @@ new Vue({
   el: '#app',
   router,
   template: '<App/>',
-  components: { App },
-  mounted(){
-    axios.get('/')
-    .then(console.log)
-  }
+  components: { App }
 })
