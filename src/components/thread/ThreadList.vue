@@ -1,6 +1,5 @@
 <template>
     <div class="thread-container">
-        <slot></slot>
         <router-view></router-view>
         <ul class="collection">
             <threaditem v-for="(item, index) in threads" :id="index" :thread="item">
@@ -17,6 +16,7 @@
 <script>
     import axios from 'axios'
     import threaditem from "./Thread-item"
+    
     //console.log(mockdata)
     export default {
         name: "threadlist",
@@ -60,7 +60,8 @@
             }
         },
         components: {
-            threaditem
+            threaditem,
+            
         }
     }
 
