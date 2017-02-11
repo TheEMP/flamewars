@@ -1,35 +1,36 @@
-<<<<<<< HEAD
+
 import userList from '../components/users/User-list.vue'
 import Profile from '../components/users/Profile'
 import Show from '../components/users/Show'
-=======
 
 import profile from '../components/users/Profile'
 import auth from "../components/users/Auth"
->>>>>>> 256c6c85e369cb9f74ef1ed5870bf1709e084b71
+import profileThreads from "../components/users/children/Threads.vue"
+import profileComments from "../components/users/children/Comments.vue"
 import login from "../components/users/Login"
 import register from "../components/users/Register"
 export default [
-<<<<<<< HEAD
-    {
-      path: '/profile',
-      name: 'profile',
-      component: Profile
-    },
-    {
-      path: '/users',
-      name: 'users',
-      component: userList
-    },
-    {
-      path: '/user/:id',
-      name: 'user.show',
-      component: Show
-    },
-    {
-      path: "/login",
-      name: "login",
-=======
+  {
+    path: '/profile',
+    name: 'profile',
+    component: Profile
+  },
+  {
+    path: '/users',
+    name: 'users',
+    component: userList
+  },
+  {
+    path: '/user/:id',
+    name: 'user.show',
+    component: Show
+  },
+  {
+    path: "/login",
+    name: "login",
+  },
+
+
   {
     path: '/profile',
     name: 'profile',
@@ -38,16 +39,12 @@ export default [
       {
         path: 'threads',
         name: 'profile.threads',
-        template: `
-         <h1>Threads</h1>
-        <threadlist :threads="userThreads"></threadlist>
-        `
+        component: profileThreads
       },
       {
         path: 'comments',
         name: 'profile.comments',
-        template: `       <h1>Comments</h1>
-        <threadlist v-for="comment in comments">{{comment.text}} <br>  {{comments.length}} Comment </threadlist>`
+        component: profileComments
       },
     ]
   },
@@ -62,7 +59,6 @@ export default [
     }, {
       path: "login",
       name: "auth.login",
->>>>>>> 256c6c85e369cb9f74ef1ed5870bf1709e084b71
       component: login
     }]
   }

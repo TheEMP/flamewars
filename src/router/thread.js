@@ -3,7 +3,7 @@ import threads from "../components/thread/AllThreads"
 import newThread from "../components/thread/NewTopic"
 export default [
     {
-        path: '/threads',
+        path: '',
         name: 'threads',
         component: threads,
         children: [{

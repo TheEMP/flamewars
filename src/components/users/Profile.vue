@@ -1,36 +1,53 @@
 <template>
     <div class="profile-container">
-        <h1>Threads</h1>
-        <threadlist :threads="userThreads"></threadlist>
+         <nav class="nav-extended">
+    
+    <div class="nav-content center-align">
+      <ul class="tabs tabs-transparent ">
+        <router-link class = "tab" active-class= "active" tag = "li" :to = "{name:'profile.comments'}"><a>Comments</a></router-link>
+        <router-link class = "tab" active-class= "active" tag = "li" :to = "{name:'profile.threads'}"><a>Threads</a></router-link>
+        <router-link class = "tab" active-class= "active" tag = "li" :to = "{name:'threads'}"><a>Home</a></router-link>
+        
+      </ul>
+    </div>
+  </nav>
+  <div class="card-panel">
 
-        <h1>Comments</h1>
-        <threadlist v-for="comment in comments">{{comment.text}} <br>  {{comments.length}} Comment </threadlist>
-        <div></div>
+      <router-view></router-view>
+  </div>
     </div>
 </template>
 
 <script>
     import axios from 'axios'
-    import threadlist from "../thread/ThreadList.vue"
+
     import cookies from '../../assets/getCookies.js'
     export default {
         name: 'profile',
         data() {
             return {
-                user: {
+                // user: {
+                //     userId: cookies("userId"),
+                //     name: "asdf",
+                //     url: "http://",
+                //     downvotes: 0,
+                // },
+                threads: [],
+                comments: [],
+                // usersThreads: []
+            }
+        },
+        props: {user: {
+            type:Object,
+            default: ()=>({
                     userId: cookies("userId"),
                     name: "asdf",
                     url: "http://",
                     downvotes: 0,
-                },
-                threads: [],
-                comments: [],
-                usersThreads: []
-            }
-        },
-        props: ['user'],
+                })
+        }},
         components: {
-            threadlist
+            
         },
         mounted() {
             axios.get(`api/threads?userId=${this.user.userId}`).then(res => {
