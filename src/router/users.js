@@ -1,13 +1,7 @@
 
 import userList from '../components/users/User-list.vue'
 import Show from '../components/users/Show'
-<<<<<<< HEAD
 import auth from "../components/users/Auth"
-=======
-
-
-
->>>>>>> origin/master
 import profileThreads from "../components/users/children/Threads.vue"
 import profileComments from "../components/users/children/Comments.vue"
 import profile from '../components/users/Profile'
