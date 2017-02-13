@@ -60,4 +60,4 @@ router.delete('/comments/:id', function (req, res) {
 
 
 // module.exports = router
-module.exports = Comments
+module.exports = router
