@@ -1275,6 +1275,10 @@ clone@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/clone/-/clone-1.0.2.tgz#260b7a99ebb1edfe247538175f783243cb19d149"
 
+clone@^2.1.0:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/clone/-/clone-2.1.2.tgz#1b7f4b9f591f1e8f83670401600345a02887435f"
+
 co@^4.6.0:
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/co/-/co-4.6.0.tgz#6ea6bdf3d853ae54ccb8e47bfa0bf3f9031fb184"
@@ -2606,7 +2610,7 @@ is-plain-obj@^1.0.0:
 
 is-posix-bracket@^0.1.0:
   version "0.1.1"
-  resolved "http://registry.npmjs.org/is-posix-bracket/-/is-posix-bracket-0.1.1.tgz#3334dc79774368e92f016e6fbc0a88f5cd6e6bc4"
+  resolved "https://registry.npmjs.org/is-posix-bracket/-/is-posix-bracket-0.1.1.tgz#3334dc79774368e92f016e6fbc0a88f5cd6e6bc4"
 
 is-primitive@^2.0.0:
   version "2.0.0"
@@ -2996,10 +3000,10 @@ markdown-it-sup@^1.0.0:
   resolved "https://registry.yarnpkg.com/markdown-it-sup/-/markdown-it-sup-1.0.0.tgz#cb9c9ff91a5255ac08f3fd3d63286e15df0a1fc3"
 
 markdown-it-toc-and-anchor@^4.1.1:
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/markdown-it-toc-and-anchor/-/markdown-it-toc-and-anchor-4.1.1.tgz#d31e4377aed7e06d14cd7b7c9a8f73ff0fab5308"
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/markdown-it-toc-and-anchor/-/markdown-it-toc-and-anchor-4.2.0.tgz#d1613327cc63c61f82cd66cbac5564f4db12c0e9"
   dependencies:
-    clone "^1.0.2"
+    clone "^2.1.0"
     uslug "^1.0.4"
 
 markdown-it@^6.0.1:
@@ -4755,8 +4759,8 @@ uniqs@^2.0.0:
   resolved "https://registry.yarnpkg.com/uniqs/-/uniqs-2.0.0.tgz#ffede4b36b25290696e6e165d4a59edb998e6b02"
 
 "unorm@>= 1.0.0":
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/unorm/-/unorm-1.4.1.tgz#364200d5f13646ca8bcd44490271335614792300"
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/unorm/-/unorm-1.6.0.tgz#029b289661fba714f1a9af439eb51d9b16c205af"
 
 unpipe@1.0.0, unpipe@~1.0.0:
   version "1.0.0"
